@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+    // Regular
+    console.log('hello');
+
+    // Interpolated
+    var happy = ': )'
+    console.log('Hello, I am a %s string', ': )');
+    console.log(`Hello, I am a ${happy} string`);
+
+    // Styled
+    console.log("%c I am some awful text", "font-size: 50px; background:blue; text-shadow: 10px 10px 0 red");
+
+    // warning!
+    console.warn("DON'T DO THAT!!!");
+
+    // Error :|
+    console.error('THIS IS STARTLING!!!');
+
+    // Info
+    console.info("Cleopatra had four children–only one survived to adulthood. Cleopatra's first child was a son by Caesar. She also had twins, Alexander Helios and Cleopatra Selene, as well as another son, Ptolemy Philadelphos, all by Marcus Antonius.");
+
+    // Testing
+    const p = document.querySelector('p');
+    console.assert(p.classList.contains('Cleopatra'), 'You did not choose wisely!');
+    // clearing
+    console.clear();
+
+    // Viewing DOM Elements
+    console.log(p);
+    console.dir(p);
+
+    console.clear()
+    // Grouping together
+
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years`);
+      console.groupEnd()
+    });
+
+    dogs.forEach(dog => {
+      console.groupCollapsed(`${dog.name}`);
+      console.log(`This is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 7} dog years`);
+      console.groupEnd()
+    });
+
+    // counting
+
+    console.count("Hello");
+    console.count("Hello");
+    console.count("Hello");
+    console.count("Hello");
+    console.count("Goodbye");
+    console.count("Hello");
+    console.count("Goodbye");
+    console.count("Hello");
+    console.count("Goodbye");
+    console.count("Hello");
+    console.count("Morning");
+    console.count("Morning");
+    console.count("Hello");
+
+    // timing
+
+    console.time('Fetching data...');
+    fetch('https://api.github.com/users/agerista')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('Fetching data...');
+        console.log(data);
+      });
+
+    // table
+
+    console.table(dogs);
+  </script>
+</body>
+</html>
